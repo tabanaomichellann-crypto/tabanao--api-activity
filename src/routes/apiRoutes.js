@@ -1,37 +1,44 @@
 const express = require('express');
 const router = express.Router();
 
-// Import dish controller functions
+// Dish Controller
 const {
   getAllDishes,
   createDish,
   getDishById,
   updateDish,
-  deleteDish
+  deleteDish,
 } = require('../controllers/dishController');
 
-// Routes
+// Chef Controller
+const {
+  createChef,
+  getAllChefs,
+} = require('../controllers/chefControllers');
+
+// =====================
+// Chef Routes
+// =====================
+router.post('/chefs', createChef);
+router.get('/chefs', getAllChefs);
+
+// =====================
+// Dish Routes
+// =====================
+
+// 1. GET /dishes → Get all dishes (Show menu)
 router.get('/dishes', getAllDishes);
-router.post('/dishes', createDish);
-router.get('/dishes/:id', getDishById);
-router.put('/dishes/:id', updateDish);
-router.delete('/dishes/:id', deleteDish);
 
-module.exports = router;
-
-// 1. If user sends GET request (show menu) → ask chef to get all dishes
-router.get('/dishes', getAllDishes);
-
-// 2. If user sends POST request (new order) → ask chef to create dish
+// 2. POST /dishes → Create a new dish
 router.post('/dishes', createDish);
 
-// 3. If user sends GET request with ID (specific meal) → ask chef to get dish by ID
+// 3. GET /dishes/:id → Get a specific dish by ID
 router.get('/dishes/:id', getDishById);
 
-// 4. If user sends PUT request with ID (change meal) → ask chef to update dish
+// 4. PUT /dishes/:id → Update a dish
 router.put('/dishes/:id', updateDish);
 
-// 5. If user sends DELETE request with ID (cancel meal) → ask chef to delete dish
+// 5. DELETE /dishes/:id → Delete a dish
 router.delete('/dishes/:id', deleteDish);
 
 module.exports = router;

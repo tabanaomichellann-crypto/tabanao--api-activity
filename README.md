@@ -19,3 +19,12 @@ README.md Template:
 15. **4. Testing:**
 16. - ![alt text](<Screenshot 2026-01-28 181653.png>)
 17. - ![alt text](image.png)
+
+
+--Why did I choose to embed the Review / Tag / Log?
+
+I chose to embed the Review/Tag/Log because these data elements are tightly coupled with the main record and are primarily accessed together. Embedding allows the system to retrieve all related information in a single database query, which improves performance and reduces query complexity. Since reviews, tags, and logs are not frequently accessed independently and usually do not grow excessively large, embedding them ensures faster read operations, better data locality, and simpler data modeling.
+
+Why did I choose to reference the Chef / User / Guest?
+
+I chose to reference the Chef/User/Guest because these entities are shared across multiple records and may be associated with different dishes, orders, or activities within the system. Referencing prevents data duplication, maintains data consistency, and allows updates to user or chef information to be reflected across all related records. This approach also supports scalability and flexibility, especially when the referenced entity contains extensive or frequently updated data.
