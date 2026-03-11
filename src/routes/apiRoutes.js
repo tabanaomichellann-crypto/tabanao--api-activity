@@ -7,13 +7,13 @@ const {
   createDish,
   getDishById,
   updateDish,
-  deleteDish,
+  deleteDish
 } = require('../controllers/dishController');
 
 // Chef Controller
 const {
   createChef,
-  getAllChefs,
+  getAllChefs
 } = require('../controllers/chefControllers');
 
 // =====================
